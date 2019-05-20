@@ -8,8 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var textfield: UITextField!
+    
+    
+    let textfield_limit = 5
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+{
+    return(textfield.text?.utf16.count ?? 0) + string.utf16.count - range.length <= textfield_limit
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
